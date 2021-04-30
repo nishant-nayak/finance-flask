@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-info" role="alert">Password must be atleast 8 characters long!</div>
+    <form action="/changepwd" method="post" onsubmit="checks()">
+        <div class="form-group">
+            <input class="form-control" id="old" name="old" placeholder="Old Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="new" name="new" placeholder="New Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="confirm" name="confirm" placeholder="Confirm New Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Change Password</button>
+    </form>
+    <script>
+        function checks()
+        {
+            old = document.getElementById("old").value
+
+            if (old === "")
+            {
+                alert("Old Password field cannot be empty.")
+            }
+            newpwd = document.getElementById("new").value
+
+            if (newpwd === "")
+            {
+                alert("New Password field cannot be empty.")
+            }
+            confirm = document.getElementById("confirm").value
+
+            if (newpwd != confirm)
+            {
+                alert("New Passwords do not match.")
+            }
+
+            if (newpwd.length < 8)
+            {
+                alert("Password must be atleast 8 characters long.")
+            }
+        }
+    </script>
+{% endblock %}

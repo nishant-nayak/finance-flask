@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post" onsubmit="checkEmpty()">
+        <div class="form-group">
+            <input class="form-control" type="text" id="symbol" name="symbol" placeholder="Symbol">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="number" id="shares" name="shares" placeholder="Shares">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+    <script>
+        function checkEmpty()
+        {
+            symbol = document.getElementById("symbol").value
+            if (symbol === "")
+            {
+                alert("Symbol field can't be empty.")
+            }
+            shares = document.getElementById("shares").value
+            shares = parseInt(shares, 10)
+            if (shares <= 0)
+            {
+                alert("Shares must be greater than zero!")
+            }
+        }
+    </script>
+{% endblock %}

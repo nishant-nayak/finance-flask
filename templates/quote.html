@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote Price
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post" onsubmit=checkEmpty()>
+        <div class="form-group">
+            <input class="form-control" id="symbol" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <script>
+        function checkEmpty()
+        {
+            symbol = document.getElementById("symbol").value
+            if (symbol === "")
+            {
+                alert("Symbol field can't be empty.")
+            }
+        }
+    </script>
+{% endblock %}
